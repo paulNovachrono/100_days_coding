@@ -30,10 +30,25 @@ console.log(myString.slice(0, 6)); // it includes 0 to 5, last index is not incl
 // substring: it doesn't accept negative index
 // slice: it accepts negative index
 
-let newString1 = 'Mentor is Hitesh Sir';
-let alpha = newString1.slice(-4,-1) // it will return empty string
+let newString1 = 'Mentor_is_Hitesh_Sir';
+let alpha = newString1.slice(-6,-1) // it will return empty string
 console.log(alpha);
+// here is 1 thing I noticed if we use negative index the starting and ending index will be reversed
 
+let anything = '   Debajoyti   ';
+console.log(anything); // '   Debajoyti   '
+// we can use trim() method to remove the extra space
+console.log(anything.trim()); // 'Debajoyti'
+
+const url = 'https://ishan.com/about%20me';
+// replacing the %20 with space
+const newUrl = url.replace('%20', ''); // we are replacing it with empty string
+console.log(newUrl);
+console.log(url.includes('ishan')); // true
+
+// string to array conversion
+let myString2 = 'Hello-this-is-debajoyti';
+console.log(myString2.split('-')); // [ 'Hello', 'this', 'is', 'debajoyti' ]
 
 
 
