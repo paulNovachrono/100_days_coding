@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM pt-2</title>
+    <style>
+        .bg-black{
+            background-color: #212121;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div class="week">
+        <div class="day">Mon</div>
+        <div class="day">Tues</div>
+        <div class="day">wed</div>
+        <div class="day">thurs</div>
+    </div>
+</body>
+<script>
+    // task 1, get the parent element and find out what is in that
+    const parentEl = document.querySelector('.week')
+    console.log(parentEl);
+    console.log(parentEl.children); // this is html collection
+    const childel = parentEl.children
+
+    // for(i = 0; i < childel.length; i++){
+    //     console.log(childel[i].innerHTML);
+    //     const childHTML = childel[i].innerHTML
+
+    // }
+
+    // getting the parent element
+    const firstDay = document.querySelector('.day')
+    parentday = firstDay.parentElement
+    // console.log(`This is the parent element ${parentday}`);
+    console.log(parentday);
+    // siblings
+    const sibl = firstDay.nextElementSibling //Tues
+    console.log(sibl);//Tues
+    
+</script>
+</html>
