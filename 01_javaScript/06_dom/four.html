@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body style="color: white; background-color: #212121;">
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    // task is to create a function that adds given languages to the list
+
+    function addList (lan){
+    // check if 'lan' is empty
+    if(!lan && lan == ''){
+        return 'add your language'
+    }
+    // create a list item
+    const list = document.createElement('li')
+    list.innerText = lan
+    // select the parent element
+    const lanUl = document.querySelector('.language')
+    lanUl.appendChild(list)
+    }
+    addList('py')
+
+    // Here is optimization problem in this way because every time a element is created the whole DOM tree traversed.
+    // to fix it use text node, it just crate an element at the end of any child element
+
+    const optiAddList = (lan) => {
+        // create a list element 
+        const li = document.createElement('li')
+        // add the parameter to the text node, the text node will be at the end of the li
+        li.appendChild(document.createTextNode(lan))
+        // select the UL
+        const ul = document.querySelector('.language')
+        ul.appendChild(li)
+    }
+    optiAddList('ruby')
+    optiAddList('Java')
+    optiAddList('TypeScript')
+    optiAddList('React')
+
+    // edit function
+    // task is to replace 2nd with cpp
+    function editList(l, num = 1) {
+    console.log(num);
+    // const SecondChild = document.querySelector(`li:nth-child(2)`)
+    const child = document.querySelector(`li:nth-child(${num})`)
+    // create li element and add text to it
+    const newLi = document.createElement('li')
+    newLi.textContent = `${l}`
+    // replace with 2nd child
+    child.replaceWith(newLi)
+    }
+    editList('cpp', 2)
+
+    // remove function
+    function removeElement(num){
+    // select removed element
+    const removeEl = document.querySelector(`li:nth-child(${num})`)
+    removeEl.remove() // remove element
+    }
+    removeElement(3)
+</script>
+</html>
