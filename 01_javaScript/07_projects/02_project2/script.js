@@ -15,10 +15,8 @@ form.addEventListener('submit', function(e){
     if(height <0 || isNaN(height)){
         console.log(height);
         return `Not valid ${height}`
-        
     }else if (weight < 0 || isNaN(weight)){
         console.log(weight);
-        
         return `Not valid ${weight}`
     }
     else{
@@ -29,5 +27,8 @@ form.addEventListener('submit', function(e){
         results.innerHTML = `<span>${bmi}</span>`
         console.log(bmi);
         
+        if(bmi < 18.6) results.innerHTML = `<span>${bmi}</span> <br>Under weighted`
+        else if (bmi < 24.9) results.innerHTML = `<span>${bmi}</span> <br>Weight is Normal`
+        else results.innerHTML = `<span>${bmi}</span> <br>Over weighted`
     }
 })
