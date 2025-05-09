@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // Events
+        // type, timeStamp, preventDefault
+        // target, toElement, srcElement, currentTarget
+        // clientX, clientY, offset, screenX, screenY
+        // keyboards key=> altKey, shiftKey, keyCode
+
+
+    // event bobbling => when the even actives from child elements to parent element that is event bobbling
+    // eg
+    const ul = document.querySelector('#images')
+    ul.addEventListener('click', () => {
+        console.log(`UL is clicked`);
+    })
+
+    const owlImg = document.querySelector('#owl')
+    owlImg.addEventListener('click', () => {
+        console.log(`Owl is clicked`);
+    })
+
+    // The question is which event will active 1st?
+    // on the owl and then it goes to the ul
+
+
+    // event capturing => the event actives from parent element to child element
+    // how to do it? add a "true" value as 3rd parameter in the addEventListener
+
+    const secondTimeUl = document.querySelector('#images')
+    const river = document.querySelector('#river')
+    secondTimeUl.addEventListener('click', function(){
+        console.log(`Clicked in UL (event capturing)(2nd iteration)`);
+    }, true)
+
+    river.addEventListener('click', function(){
+        console.log(`clicked on the river (Event Capturing)`);
+    },true)
+
+    // How to stop propagating
+    const japan = document.querySelector("#japan")
+    japan.addEventListener('click', (e) => {
+        console.log('Japan is clicked');
+        e.stopPropagation() // after using this event on the ul won't be working
+    })
+
+    const thirdTimeUl = document.querySelector('#images')
+    thirdTimeUl.addEventListener('click', function(){
+        console.log('Clicked 3rd iteration');
+        
+    })
+    // ** Note ** Since JS is a single threated language we will see that output of the capturing mode is still there because JS reads code from top to bottom. after calling the stopPropagation() method the event does'nt active
+
+    // preventDefault
+    const google = document.querySelector('#google')
+    google.addEventListener('click', function(e){
+        console.log(`Clicked on google`);
+        e.preventDefault() // now link won't be clicking
+        e.stopPropagation()// we stopped bubbling
+    })
+
+
+    ul.addEventListener('click', function(e){
+        const list = e.target.parentElement
+        console.log(e.target.parentElement); // we got the list here
+        // if we only click on the image, the "li" should be deleted
+        // get the image tagName
+        if(e.target.tagName === 'IMG'){
+            list.remove()
+        }
+        
+    })
+</script>
+</html>
