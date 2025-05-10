@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async functions</title>
+</head>
+<body>
+    <h1>This is Debajoyti Paul</h1>
+    <button class="start">Start</button>
+    <button class="stop">Stop</button>
+</body>
+<script>
+    // use setTimeOut to change the h1, use stop button not change the task
+    function changeText (){
+        const chnageName = setTimeout(() => {
+            // get the h1 and change the text
+            const h1 = document.querySelector('h1')
+            h1.innerText = 'This is Ishan, on a journey to become full stack developer'
+        }, 4000)
+    }
+    const startBtn = document.querySelector('.start')
+    startBtn.addEventListener('click', () => {
+        // calling the button
+        changeText()
+    })
+
+    const stopBtn = document.querySelector('.stop')
+    stopBtn.addEventListener('click', function(){
+        clearTimeout(chnageName)
+    })
+</script>
+</html>
