@@ -41,7 +41,7 @@
     const div = document.querySelector('#insert');
     document.addEventListener('keydown', function (e) {
     console.log(e.key);
-    div.innerHTML = `You Pressed "${e.key}"<br>
+    div.innerHTML = `You Pressed "${e.key === "" ? "space": e.key}"<br>
     This is the keyCode : "${e.keyCode}"<br>
     This is the Code : "${e.code}"
     `;
