@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// Step 1: Define the URL from where we want to fetch data (GitHub user info)
+const url = 'https://api.github.com/users/paulnovachrono'
+
+// Step 2: Create a new XMLHttpRequest object — this is used to make HTTP requests
+const xhr = new XMLHttpRequest()
+
+// Step 3: Set up the request using .open()
+// 'GET' means we want to retrieve data, and 'url' is where we want to get it from
+xhr.open('GET', url)
+
+// Step 4: Set up what should happen when the request state changes
+xhr.onreadystatechange = function() {
+    // Log the current state (just for understanding how the process flows)
+    console.log(xhr.readyState)
+
+    // Step 5: Check if the request is complete (readyState === 4 means DONE)
+    if (xhr.readyState === 4) {
+        // Step 6: Convert the JSON string response to a JavaScript object
+        const data = JSON.parse(this.responseText)
+
+        console.log(data);
+        
+
+        // Step 7: Access specific data from the object and display it (like number of followers)
+        console.log(`Here is the followers: ${data.followers}`)
+    }
+}
+
+// Step 8: Send the request to the server
+xhr.send()
+
+</script>
+</html>
