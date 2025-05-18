@@ -56,3 +56,6 @@ console.log(teacher1);
 console.log(teacher2);
 console.log(teacher1.addCourse());
 console.log(teacher2.addCourse());
+
+console.log(user1 instanceof User);
+console.log(User instanceof Teacher);
